@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bigwave Bianca</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: #1a1a2e;
+            overflow-x: hidden;
+        }
+
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0077b6, #00b4d8, #90e0ef);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 120px;
+            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 1200 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,60 C150,100 350,0 600,60 C850,120 1050,20 1200,60 L1200,120 L0,120 Z' fill='%23ffffff'/%3E%3C/svg%3E");
+            background-size: cover;
+        }
+
+        .wave-emoji {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: wave 2s ease-in-out infinite;
+        }
+
+        @keyframes wave {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(20deg); }
+            75% { transform: rotate(-15deg); }
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .tagline {
+            font-size: 1.4rem;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 140px;
+            color: #fff;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
+        }
+
+        section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        .about h2, .passions h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #0077b6;
+        }
+
+        .about p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .card {
+            background: linear-gradient(135deg, #e0f7fa, #f0f9ff);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+        }
+
+        .card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .card h3 {
+            color: #0077b6;
+            margin-bottom: 0.5rem;
+        }
+
+        .card p {
+            color: #555;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: #0077b6;
+            color: rgba(255,255,255,0.8);
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="wave-emoji">🌊</div>
+        <h1>Bigwave Bianca</h1>
+        <p class="tagline">Riding the digital wave, one project at a time.</p>
+        <div class="scroll-hint">scroll down</div>
+    </div>
+
+    <section class="about">
+        <h2>About Me</h2>
+        <p>
+            Hey there! I'm Bianca — builder, creator, and lover of big waves (both in the ocean and in tech).
+            I believe in shipping fast, learning constantly, and making things that matter.
+        </p>
+        <p>
+            Whether I'm diving into code, catching waves, or dreaming up the next project,
+            I bring the same energy: go big or go home.
+        </p>
+    </section>
+
+    <section class="passions">
+        <h2>What I'm Into</h2>
+        <div class="cards">
+            <div class="card">
+                <div class="icon">💻</div>
+                <h3>Building</h3>
+                <p>Turning ideas into real, working software that people actually use.</p>
+            </div>
+            <div class="card">
+                <div class="icon">🏄‍♀️</div>
+                <h3>Surfing</h3>
+                <p>Nothing clears the mind like paddling out and catching a perfect wave.</p>
+            </div>
+            <div class="card">
+                <div class="icon">🚀</div>
+                <h3>Shipping</h3>
+                <p>Done is better than perfect. Get it out there, iterate, improve.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Made with 🌊 by Bigwave Bianca &mdash; 2026</p>
+    </footer>
+</body>
+</html>
