@@ -76,9 +76,7 @@
         /* ── Campaign sections ── */
         .campaigns { padding: 0 2rem 3rem; }
 
-        .campaign-section {
-            margin-bottom: 2.5rem;
-        }
+        .campaign-section { margin-bottom: 2.5rem; }
         .campaign-header {
             display: flex;
             align-items: baseline;
@@ -86,10 +84,7 @@
             margin-bottom: 1rem;
             flex-wrap: wrap;
         }
-        .campaign-header h2 {
-            font-size: 1.2rem;
-            color: #1a1a2e;
-        }
+        .campaign-header h2 { font-size: 1.2rem; color: #1a1a2e; }
         .audience-badge {
             display: inline-block;
             padding: 0.25rem 0.75rem;
@@ -106,17 +101,14 @@
         .audience-badge.high-perf { background: #fff3e0; color: #e65100; }
         .audience-badge.cold-water { background: #e0f7fa; color: #00838f; }
         .audience-badge.broad { background: #f5f5f5; color: #555; }
-        .landing-page {
-            font-size: 0.8rem;
-            color: #0077b6;
-            text-decoration: none;
-        }
+        .landing-page { font-size: 0.8rem; color: #0077b6; text-decoration: none; }
         .landing-page:hover { text-decoration: underline; }
+        .targeting-note { font-size: 0.75rem; color: #888; margin-top: 0.25rem; margin-bottom: 0.75rem; }
 
         /* ── Creatives grid ── */
         .creatives-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
             gap: 1.25rem;
         }
 
@@ -137,16 +129,13 @@
             position: relative;
             width: 100%;
             aspect-ratio: 16/9;
-            background: #1a1a2e;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background: #0a0a1a;
             overflow: hidden;
         }
-        .creative-media video {
+        .creative-media iframe {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            border: none;
         }
         .creative-media img {
             width: 100%;
@@ -157,11 +146,13 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
+            height: 100%;
             gap: 0.5rem;
-            color: rgba(255,255,255,0.5);
+            color: rgba(255,255,255,0.4);
         }
         .media-placeholder .icon { font-size: 2.5rem; }
-        .media-placeholder .text { font-size: 0.75rem; }
+        .media-placeholder .text { font-size: 0.75rem; text-align: center; padding: 0 1rem; }
 
         .media-type-badge {
             position: absolute;
@@ -173,6 +164,8 @@
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.05em;
+            z-index: 2;
+            pointer-events: none;
         }
         .media-type-badge.video { background: rgba(229, 57, 53, 0.9); color: #fff; }
         .media-type-badge.static { background: rgba(255, 255, 255, 0.9); color: #333; }
@@ -187,17 +180,24 @@
             border-radius: 6px;
             font-size: 0.7rem;
             font-weight: 600;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .file-name {
+            font-size: 0.7rem;
+            color: #aaa;
+            margin-top: 0.25rem;
+            font-family: 'SF Mono', Monaco, monospace;
         }
 
         /* Card body */
-        .creative-body {
-            padding: 1.25rem;
-        }
+        .creative-body { padding: 1.25rem; }
         .creative-title {
             font-size: 0.95rem;
             font-weight: 600;
             color: #1a1a2e;
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.5rem;
             line-height: 1.3;
         }
         .ad-copy {
@@ -226,6 +226,15 @@
         }
         .toggle-copy:hover { text-decoration: underline; }
 
+        .drive-link {
+            display: inline-block;
+            margin-top: 0.5rem;
+            font-size: 0.72rem;
+            color: #888;
+            text-decoration: none;
+        }
+        .drive-link:hover { color: #0077b6; }
+
         /* ── Responsive ── */
         @media (max-width: 768px) {
             .topbar, .filters, .summary-strip, .campaigns { padding-left: 1rem; padding-right: 1rem; }
@@ -235,7 +244,6 @@
     </style>
 </head>
 <body>
-    <!-- Auth guard -->
     <script>
         (function() {
             const auth = sessionStorage.getItem('bb_auth');
@@ -275,8 +283,8 @@
         </div>
         <div class="stat-card">
             <div class="label">Total Creatives</div>
-            <div class="value">19</div>
-            <div class="sub">15 videos + 4 static images</div>
+            <div class="value">22</div>
+            <div class="sub">21 videos + 1 static image</div>
         </div>
         <div class="stat-card">
             <div class="label">Landing Pages</div>
@@ -297,269 +305,150 @@
         {
             id: "v1",
             name: "V1 — Female-Focused Cold Audience",
-            campaignFull: "NPA | Prospecting | Female-Focused Cold Audience | V1",
             audience: "Female-Led / Female-Focused — Cold Audience",
             audienceClass: "female",
             filterTag: "female",
             landingPage: "betterwave.org/summit-v1",
-            adCopy: `The water is yours. \u{1F30A}
-
-Surfing better isn't just about more hours in the water. It's about the habits, techniques, and mindsets you build to support it.
-
-The Surf Longevity Summit is for surfers who want to surf smarter, build more confidence, and keep their body ready for every swell. Because the best waves? They're still ahead of you.
-
-\u{1F517} Claim your FREE spot today: betterwave.org/summit-v1`,
+            adCopy: "The water is yours. \u{1F30A}\n\nSurfing better isn\u2019t just about more hours in the water. It\u2019s about the habits, techniques, and mindsets you build to support it.\n\nThe Surf Longevity Summit is for surfers who want to surf smarter, build more confidence, and keep their body ready for every swell. Because the best waves? They\u2019re still ahead of you.\n\n\u{1F517} Claim your FREE spot today: betterwave.org/summit-v1",
             creatives: [
-                { type: "video", label: 'Video 1: "Joy & Resilience" (Female-Led)', description: "Daughter of Turtle Paddling" },
-                { type: "static", label: "Static Image #1" }
+                { type: "video", label: 'Video 1a: "Joy & Resilience"', file: "1a_Joyandresilience_14s.mp4", driveId: "1XRAnvUksbBzKIHfjClGQK3MX5Dgry0Az" },
+                { type: "video", label: "Video 1b: Your Best Waves Are Still Ahead", file: "1b_YourbestwavesarestillAhead_1a_7s.mp4", driveId: "1vcVw0x2ahVF2BlO3QShtL4scL_z3kNK5" },
+                { type: "video", label: "Video 1c: Stoked Surfer / Effortless Paddling", file: "1c_stokedsurfer_effortlesspaddling.mp4", driveId: "1LgtOQwVQr2QZWK0WtDSzf7ziADxllv1Q" },
+                { type: "video", label: "Video 1d: Your Best Waves Ahead", file: "1d_YourBestWavesAhead.mp4", driveId: "1KRUL3uvGieNwIJPkDuaHuu_kcJ9fWgMa" },
+                { type: "video", label: "Video 1e: Your Best Waves Ahead (18s)", file: "1e_yourbestwaves_ahead_18s.mp4", driveId: "1vXnal2-h7hOHbPPUPh6DZAblbxhTcZn5" },
+                { type: "static", label: "Static Image #1", driveId: "1SGwIxF7THddw8u1VWEMqQVER0nRfMS3W" }
             ]
         },
         {
             id: "v2",
             name: "V2 — Above 40 / Male-Focused",
-            campaignFull: "NPA | Prospecting | Above 40/ Male-Focused Cold Audience | V2",
             audience: "Above 40 / Male-Focused — Cold Audience",
             audienceClass: "male-40",
             filterTag: "male-40",
             landingPage: "betterwave.org/summit-v2",
-            adCopy: `Stop fighting your body \u2014 start mastering it.
-
-Shoulder pain doesn't have to be part of your practice. Better mechanics and sustainable habits mean you can paddle harder, stay out longer, and stop breaking down between sessions.
-
-Join the free live Surf Longevity Summit. It's your blueprint to:
-\u2022 Master your mechanics and protect your joints
-\u2022 Play the long game with a community of like-minded surfers
-\u2022 Stay ready for every swell, decade after decade
-
-Don't just surf. Surf forever.
-
-\u{1F517} Claim your FREE spot today: betterwave.org/summit-v2`,
+            adCopy: "Stop fighting your body \u2014 start mastering it.\n\nShoulder pain doesn\u2019t have to be part of your practice. Better mechanics and sustainable habits mean you can paddle harder, stay out longer, and stop breaking down between sessions.\n\nJoin the free live Surf Longevity Summit. It\u2019s your blueprint to:\n\u2022 Master your mechanics and protect your joints\n\u2022 Play the long game with a community of like-minded surfers\n\u2022 Stay ready for every swell, decade after decade\n\nDon\u2019t just surf. Surf forever.\n\n\u{1F517} Claim your FREE spot today: betterwave.org/summit-v2",
             creatives: [
-                { type: "video", label: "Video 2.1: Longevity / Recovery" },
-                { type: "video", label: "Video 2.2: Shoulder Pain" },
-                { type: "video", label: "Video 2.3: Pain Free Paddling" },
-                { type: "video", label: "Video 2.4: Shoulder Pain" }
+                { type: "video", label: "Video 2a: Shoulder Pain / Longevity Recovery", file: "2a_ShoulderPainLongevityRecovery_10s.mp4", driveId: "1k3qvOuv_a2HCtRcgD2i8cQTGBkcs-IQt" },
+                { type: "video", label: "Video 2b: Shoulder Pain", file: "2b_shoulderpain.mp4", driveId: "1Yyue2J1j_q9JxICsSL0I4m3zTsnShYQv" },
+                { type: "video", label: "Video 2c: Shoulder Pain (alt)", file: "2c_shoulderpain.mp4", driveId: "1fW8ZFDF8rpg9gM0zT6RXHLX9kAogowLM" },
+                { type: "video", label: "Video 2d: Pain Free Paddling", file: "2d_painfreepaddling.mp4", driveId: "1-ktw6YfbvZaxQs6eEeSsyqms6jpjINAZ" },
+                { type: "video", label: "Video 2e: Shoulder Pain (alt 2)", file: "2e_shoulderpain.mp4", driveId: "1eyn4rUMo_ISH39Vced6m3OrF6yMqMpQS" }
             ]
         },
         {
             id: "v3",
             name: "V3 — Below 40 / Adult Learners",
-            campaignFull: "NPA | Prospecting | Below 40/ Adult Learners Cold Audience | V3",
             audience: "Below 40 / Adult Learners — Cold Audience",
             audienceClass: "adult-learner",
             filterTag: "adult-learner",
             landingPage: "betterwave.org/summit-v3",
-            adCopy: `Stop struggling and start surfing. \u{1F30A}
-
-Riding a board that's too small stalls surfing progress \u2013 especially as an adult learner. If you aren't catching waves, you aren't getting better. Longevity is about techniques to help generate speed you've been missing and catch more waves.
-
-Join the free live Surf Longevity Summit. It's your blueprint to:
-\u2022 Better Mechanics: Move more efficiently \u2014 with power, less effort, and less wear on your body
-\u2022 Smart Equipment Choices: Stop fighting your board and start catching more waves
-\u2022 Lasting Progression: Build habits that keep you improving and in the water for decades
-
-Your best surfing is still ahead.
-
-\u{1F517} Claim your FREE spot today: betterwave.org/summit-v3`,
+            adCopy: "Stop struggling and start surfing. \u{1F30A}\n\nRiding a board that\u2019s too small stalls surfing progress \u2013 especially as an adult learner. If you aren\u2019t catching waves, you aren\u2019t getting better.\n\nJoin the free live Surf Longevity Summit. It\u2019s your blueprint to:\n\u2022 Better Mechanics: Move more efficiently \u2014 with power, less effort, and less wear on your body\n\u2022 Smart Equipment Choices: Stop fighting your board and start catching more waves\n\u2022 Lasting Progression: Build habits that keep you improving and in the water for decades\n\nYour best surfing is still ahead.\n\n\u{1F517} Claim your FREE spot today: betterwave.org/summit-v3",
             creatives: [
-                { type: "video", label: "Video 3.1: Progression Focused Visual" },
-                { type: "video", label: "Video 3.2: Surfing Smarter" }
+                { type: "video", label: "Video 3a: Progression Focused", file: "3a_progressFocus.mp4", driveId: "1R4IcfI7Ur89ePCd_nuUqjTo3ATsOIWhK" },
+                { type: "video", label: "Video 3b: Progress POV", file: "3b_progressPOV.mp4", driveId: "1KAFgCPiASeej0PuryShp-USjUMXzlMa5" },
+                { type: "video", label: "Video 3c: Progressive Talking Head", file: "3c_progressive_talkinghead.mp4", driveId: "1alTvO9dKBlPktE4nYXF-ozZPKZibZYcV" }
             ]
         },
         {
             id: "v4",
-            name: 'V4 — Below 40 / Male-Focused',
-            campaignFull: "NPA | Prospecting | Below 40/ Male-Focused Cold Audience | V4",
+            name: "V4 — Below 40 / Male-Focused",
             audience: "Below 40 / Male-Focused — Cold Audience",
             audienceClass: "male-under40",
             filterTag: "male-under40",
             landingPage: "betterwave.org/summit-v4",
-            adCopy: `The barrel is closer than you think. \u{1F48E}
-
-Most surfers think getting barreled is reserved for the elite. The truth? It's about technical positioning and the mental conviction to stay in the pocket.
-
-The Surf Longevity Summit breaks down the pillars of progression that actually matter:
-
-\u2022 Mental Resilience: Staying calm in the impact zone.
-\u2022 Technical Positioning: Learning exactly where to be.
-\u2022 Sustainable Performance: Keeping your body sharp.
-
-You don't need a miracle. You need a method.
-
-Click to claim your FREE spot and unlock tube time. \u{1F447}
-\u{1F517} betterwave.org/summit-v4`,
+            adCopy: "The barrel is closer than you think. \u{1F48E}\n\nMost surfers think getting barreled is reserved for the elite. The truth? It\u2019s about technical positioning and the mental conviction to stay in the pocket.\n\nThe Surf Longevity Summit breaks down the pillars of progression:\n\n\u2022 Mental Resilience: Staying calm in the impact zone.\n\u2022 Technical Positioning: Learning exactly where to be.\n\u2022 Sustainable Performance: Keeping your body sharp.\n\nYou don\u2019t need a miracle. You need a method.\n\n\u{1F517} betterwave.org/summit-v4",
             creatives: [
-                { type: "video", label: 'Video 4: "Tube Time Mastery" (Progression & Mindset)' },
+                { type: "video", label: 'Video 4: "Tube Time Mastery"', file: "TubeMastery_9s_progression.mp4", driveId: "12ZE3kPiR0VssTHwbBR5EzLPjv5Xjm-29" },
                 { type: "static", label: "Static Image #2" }
             ]
         },
         {
             id: "v5",
             name: "V5 — Below 40 / High-Performance",
-            campaignFull: "NPA | Prospecting | Below 40 / High-Performance Cold Audience | V5",
             audience: "Below 40 / High-Performance — Cold Audience",
             audienceClass: "high-perf",
             filterTag: "high-perf",
             landingPage: "betterwave.org/summit-v5",
-            adCopy: `Your habits are your real coach.
-
-Progression isn't found in a "magic pill" or a one-off session. It's built in the quiet moments of discipline between swells. If you want to surf at your peak for decades, you have to build the foundation on the sand.
-
-At the FREE Surf Longevity Summit Bianca shows you the high-performance framework to:
-
-\u2022 Optimize Your Foundation: Build the core strength and mobility required for elite turns.
-\u2022 Master Your Mindset: Turn daily discipline into your greatest competitive advantage.
-\u2022 Sustainable Habits: Stay "swell-ready" even when life gets busy.
-
-The best surfing of your life is built on the sand.
-
-Click below to master your habits. \u{1F447}
-\u{1F517} betterwave.org/summit-v5`,
+            adCopy: "Your habits are your real coach.\n\nProgression isn\u2019t found in a \u201Cmagic pill\u201D or a one-off session. It\u2019s built in the quiet moments of discipline between swells.\n\nAt the FREE Surf Longevity Summit Bianca shows you the high-performance framework to:\n\n\u2022 Optimize Your Foundation: Build the core strength and mobility required for elite turns.\n\u2022 Master Your Mindset: Turn daily discipline into your greatest competitive advantage.\n\u2022 Sustainable Habits: Stay \u201Cswell-ready\u201D even when life gets busy.\n\nThe best surfing of your life is built on the sand.\n\n\u{1F517} betterwave.org/summit-v5",
             creatives: [
-                { type: "video", label: 'Video 5: "The Habit Coach" (Under 40 / High-Performance)' }
+                { type: "video", label: 'Video 5: "The Habit Coach"', file: "HabitCoachHighPerformance_14s.mp4", driveId: "1oVG-0qaZmJclP687OmBTZW7PHZNcooXd" }
             ]
         },
         {
             id: "v6",
             name: "V6 — Above 40 / Male-Focused (Mindset)",
-            campaignFull: "NPA | Prospecting | Above 40 Surfers / Male-Focused Cold Audience | V6",
             audience: "Above 40 Surfers / Male-Focused — Cold Audience",
             audienceClass: "male-40",
             filterTag: "male-40",
             landingPage: "betterwave.org/summit-v6",
-            adCopy: `Who are you when the pressure hits? \u{1F30A}\u{1F311}
-
-The impact zone doesn't lie. It's where your preparation meets reality \u2014 and where surfers who last are separated from those who don't.
-
-Join the free live Surf Longevity Summit and learn how to master your mindset:
-
-\u2022 Neural Regulation: Train your nervous system to stay out of panic mode
-\u2022 Decisive Action: Make the right moves under pressure, every time
-\u2022 Mental Resilience: Build the psychological foundation that keeps you surfing forever
-
-The best surfers aren't just the fittest \u2014 they're the most composed.
-
-\u{1F517} Claim your FREE spot today: betterwave.org/summit-v6`,
+            adCopy: "Who are you when the pressure hits? \u{1F30A}\u{1F311}\n\nThe impact zone doesn\u2019t lie. It\u2019s where your preparation meets reality \u2014 and where surfers who last are separated from those who don\u2019t.\n\nJoin the free live Surf Longevity Summit:\n\n\u2022 Neural Regulation: Train your nervous system to stay out of panic mode\n\u2022 Decisive Action: Make the right moves under pressure, every time\n\u2022 Mental Resilience: Build the psychological foundation that keeps you surfing forever\n\nThe best surfers aren\u2019t just the fittest \u2014 they\u2019re the most composed.\n\n\u{1F517} Claim your FREE spot today: betterwave.org/summit-v6",
             creatives: [
-                { type: "video", label: 'Video 6.1: "The Stress Test" (Mindset & Decision Making)' },
-                { type: "video", label: 'Video 6.2: "We Not Surfers, We Paddlers"' }
+                { type: "video", label: 'Video 6a: "The Stress Test" (Mindset & Decision Making)', file: "Mindset&DecisionMaking_27seconds.mp4", driveId: "158Hb1hMWhQnW5T87PxJtRsk2Flt5Y9C5" },
+                { type: "video", label: 'Video 6b: "We Not Surfers, We Paddlers"', file: "2f_wenotsurfers_wepaddlers.mp4", driveId: "17JtOaTEj-mpnH7iUMOzrFSNxLQ4ysMLi" }
             ]
         },
         {
             id: "v7",
             name: "V7 — Above 40 / Male-Focused (Mobility)",
-            campaignFull: "NPA | Prospecting | Above 40 Surfers / Male-Focused Cold Audience | V7",
             audience: "Above 40 Surfers / Male-Focused — Cold Audience",
             audienceClass: "male-40",
             filterTag: "male-40",
             landingPage: "betterwave.org/summit-v7",
-            adCopy: `One habit for getting to your feet with more ease. \u{1F30A}
-
-If your pop-up feels heavy, slow, or like a struggle, it's usually not a "strength" problem\u2014it's a mobility bottleneck.
-
-Join the Free Surf Longevity Summit (90-Min Live Event):
-
-\u2022 Reclaim your stamina and paddle power.
-\u2022 Master the Glide-Up for smoother take-offs.
-\u2022 Stay surf-ready for life with routines that actually fit your schedule.
-
-Stop grinding and start surfing with more joy and less "creakiness."
-
-Join Here: betterwave.org/summit-v7`,
+            adCopy: "One habit for getting to your feet with more ease. \u{1F30A}\n\nIf your pop-up feels heavy, slow, or like a struggle, it\u2019s usually not a \u201Cstrength\u201D problem\u2014it\u2019s a mobility bottleneck.\n\nJoin the Free Surf Longevity Summit (90-Min Live Event):\n\n\u2022 Reclaim your stamina and paddle power.\n\u2022 Master the Glide-Up for smoother take-offs.\n\u2022 Stay surf-ready for life with routines that actually fit your schedule.\n\nStop grinding and start surfing with more joy and less \u201Ccreakiness.\u201D\n\nJoin Here: betterwave.org/summit-v7",
             creatives: [
-                { type: "video", label: "Video 7: Stiff Hamstrings vs. Getting to Your Feet" }
+                { type: "video", label: "Video 7: Stiff Hamstrings vs. Getting to Your Feet", file: "StiffHamstrings_vs_gettingtoyourfeet_7s.mp4", driveId: "1Jo8JqtQhA6T4gOakgD8yPOwkKMMPmHEe" }
             ]
         },
         {
             id: "v8",
             name: "V8 — Above 40 / Cold Water / Wetsuit Brands",
-            campaignFull: "NPA | Prospecting | Above 40/ Location-Based/ Wetsuit Brands | V8",
-            audience: "Location-Based (Cold Water / PNW / NE / NorCal) / Above 40 / Wetsuit Brand Interests",
+            audience: "Cold Water / PNW / NE / NorCal / Above 40 / Wetsuit Brands",
             audienceClass: "cold-water",
             filterTag: "cold-water",
             landingPage: "betterwave.org/summit-v8",
-            adCopy: `Stop fighting the rubber and start finding your rhythm. \u{1F30A}\u2744\uFE0F
-
-We love the cold for the clarity and thin crowds, but the physical reality of a 5/4 and boots can be frustrating.
-
-Join the FREE Live Surf Longevity Summit:
-
-\u2022 Thermal Priming: The exact habit to fire up your nervous system before the first flush.
-\u2022 Reclaim Your Stamina: How to stay explosive in the second hour of a session.
-\u2022 Move from "Pushing Through" to Flow: Practical tools that fit into your actual life.
-
-Don't just endure the winter\u2014thrive in it.
-
-\u{1F517} Claim your FREE spot today: betterwave.org/summit-v8`,
+            adCopy: "Stop fighting the rubber and start finding your rhythm. \u{1F30A}\u2744\uFE0F\n\nWe love the cold for the clarity and thin crowds, but the physical reality of a 5/4 and boots can be frustrating.\n\nJoin the FREE Live Surf Longevity Summit:\n\n\u2022 Thermal Priming: Fire up your nervous system before the first flush.\n\u2022 Reclaim Your Stamina: Stay explosive in the second hour.\n\u2022 Move from \u201CPushing Through\u201D to Flow: Practical tools that fit your life.\n\nDon\u2019t just endure the winter\u2014thrive in it.\n\n\u{1F517} Claim your FREE spot today: betterwave.org/summit-v8",
+            targetingNote: "Wetsuit brands: O'Neill, RipCurl, Roxy, Quiksilver, Isurus, Billabong, Abysse, Moonsuits, Xcel, Manera, Florence Marine X, Matuse",
             creatives: [
-                { type: "video", label: "Video 8: Cold Water Energy" }
-            ],
-            targetingNote: "Wetsuit brands: O'Neill, RipCurl, Roxy, Quiksilver, Isurus, Billabong, Abysse, Moonsuits, Xcel, Manera, Florence Marine X, Matuse"
+                { type: "video", label: "Video 8: Cold Water Energy", file: "ColdWaterEnergy.mp4", driveId: "1sueSOuWCJnwp-sqln8sKMNK2bEhhs_2s" }
+            ]
         },
         {
             id: "v9",
             name: "V9 — Female-Led / Above 40 / Cold Water",
-            campaignFull: "NPA | Prospecting | Female-Led / Above 40 / Cold Water Regions | V9",
             audience: "Female-Led / Above 40 / Cold Water Regions",
             audienceClass: "female",
             filterTag: "female",
             landingPage: "betterwave.org/summit-v9",
-            adCopy: `Stoke! The ultimate longevity hack. \u{1F30A}\u2728
-
-Surfing with more joy, more connection, and more energy isn't just the goal\u2014it's the secret to staying in the water forever.
-
-The surf longevity summit (90 mins / live / free)
-\u2022 master your mechanics.
-\u2022 reclaim your stamina.
-\u2022 Get stoked
-
-There is no expiry date on your surfing or your stoke. Your best waves are waiting.
-
-\u{1F517} Claim your FREE spot today: betterwave.org/summit-v9`,
+            adCopy: "Stoke! The ultimate longevity hack. \u{1F30A}\u2728\n\nSurfing with more joy, more connection, and more energy isn\u2019t just the goal\u2014it\u2019s the secret to staying in the water forever.\n\nThe surf longevity summit (90 mins / live / free)\n\u2022 master your mechanics.\n\u2022 reclaim your stamina.\n\u2022 Get stoked\n\nThere is no expiry date on your surfing or your stoke. Your best waves are waiting.\n\n\u{1F517} Claim your FREE spot today: betterwave.org/summit-v9",
             creatives: [
-                { type: "video", label: "Video 9: Effortless Joy" },
+                { type: "video", label: "Video 9: Effortless Joy", file: "EffortlessJoy.mp4", driveId: "1AdWgGT2YXEOcgQq1WLaiCqMerMreTFjh" },
                 { type: "static", label: "Static Image #3" }
             ]
         },
         {
             id: "v10",
             name: "V10 — Broad Cold Audience",
-            campaignFull: "NPA | Prospecting | Cold Audience | V10",
             audience: "Cold Audience (Broad)",
             audienceClass: "broad",
             filterTag: "broad",
             landingPage: "betterwave.org/summit-v10",
-            adCopy: `Own the lineup. \u{1F30A}\u2728
-
-That feeling of total confidence when you're dropping in\u2014where everything just clicks\u2014is the ultimate longevity hack.
-
-The surf longevity summit (90 mins / live / free)
-\u2022 master the hidden mechanics.
-\u2022 reclaim your stamina.
-\u2022 keep the flow.
-
-There is no expiry date on stoke. Your best waves are waiting.
-
-\u{1F517} Claim your FREE spot today: betterwave.org/summit-v10`,
+            adCopy: "Own the lineup. \u{1F30A}\u2728\n\nThat feeling of total confidence when you\u2019re dropping in\u2014where everything just clicks\u2014is the ultimate longevity hack.\n\nThe surf longevity summit (90 mins / live / free)\n\u2022 master the hidden mechanics.\n\u2022 reclaim your stamina.\n\u2022 keep the flow.\n\nThere is no expiry date on stoke. Your best waves are waiting.\n\n\u{1F517} Claim your FREE spot today: betterwave.org/summit-v10",
             creatives: [
-                { type: "video", label: "Video 10: Confidence Is a Feeling" },
+                { type: "video", label: "Video 10: Confidence Is a Feeling", file: "3E6FAD17-6C61-4C91-A59D-0BE38A51DDDA.mp4", driveId: "1T3cqxv-mlCRpoEa0MGt3byjUK8Ic7ebF" },
                 { type: "static", label: "Static Image #4" }
             ]
         }
     ];
 
-    // ── Render ──
     function render(filter) {
         const container = document.getElementById('campaigns');
         container.innerHTML = '';
 
         campaigns.forEach(camp => {
-            // Filter by audience
             if (filter && filter !== 'all' && filter !== 'video' && filter !== 'static') {
                 if (camp.filterTag !== filter) return;
             }
 
-            // Filter by media type
             let creatives = camp.creatives;
             if (filter === 'video') creatives = creatives.filter(c => c.type === 'video');
             if (filter === 'static') creatives = creatives.filter(c => c.type === 'static');
@@ -567,11 +456,9 @@ There is no expiry date on stoke. Your best waves are waiting.
 
             const section = document.createElement('div');
             section.className = 'campaign-section';
-            section.setAttribute('data-campaign', camp.id);
 
             const targetNote = camp.targetingNote
-                ? `<div style="font-size:0.75rem;color:#888;margin-top:0.25rem;">${camp.targetingNote}</div>`
-                : '';
+                ? `<div class="targeting-note">${camp.targetingNote}</div>` : '';
 
             section.innerHTML = `
                 <div class="campaign-header">
@@ -581,49 +468,56 @@ There is no expiry date on stoke. Your best waves are waiting.
                 </div>
                 ${targetNote}
                 <div class="creatives-grid">
-                    ${creatives.map((cr, i) => renderCreativeCard(cr, camp, i)).join('')}
+                    ${creatives.map((cr, i) => renderCard(cr, camp, i)).join('')}
                 </div>
             `;
             container.appendChild(section);
         });
     }
 
-    function renderCreativeCard(creative, campaign, index) {
+    function renderCard(creative, campaign, index) {
         const isVideo = creative.type === 'video';
-        const mediaTypeBadge = isVideo
+        const badge = isVideo
             ? '<span class="media-type-badge video">Video</span>'
             : '<span class="media-type-badge static">Static</span>';
 
-        const icon = isVideo ? '\u{1F3AC}' : '\u{1F5BC}\uFE0F';
-        const desc = creative.description ? `<div class="text">${creative.description}</div>` : '';
+        let mediaHTML;
+        if (creative.driveId) {
+            if (isVideo) {
+                mediaHTML = `<iframe src="https://drive.google.com/file/d/${creative.driveId}/preview" allow="autoplay" loading="lazy"></iframe>`;
+            } else {
+                mediaHTML = `<img src="https://lh3.googleusercontent.com/d/${creative.driveId}" alt="${creative.label}" loading="lazy">`;
+            }
+        } else {
+            const icon = isVideo ? '\u{1F3AC}' : '\u{1F5BC}\uFE0F';
+            mediaHTML = `<div class="media-placeholder"><div class="icon">${icon}</div><div class="text">${creative.label}<br>Asset not yet linked</div></div>`;
+        }
 
-        // Placeholder media — swap these with real URLs when available
-        const mediaContent = `
-            <div class="media-placeholder">
-                <div class="icon">${icon}</div>
-                <div class="text">${creative.label}</div>
-                ${desc}
-            </div>
-        `;
+        const fileName = creative.file
+            ? `<div class="file-name">${creative.file}</div>` : '';
 
-        // Only show ad copy on first creative of each campaign
+        const driveLink = creative.driveId
+            ? `<a class="drive-link" href="https://drive.google.com/file/d/${creative.driveId}/view" target="_blank">Open in Drive &nearr;</a>` : '';
+
         const copySection = index === 0 ? `
             <div class="ad-copy" id="copy-${campaign.id}">
                 ${campaign.adCopy.replace(/\n/g, '<br>')}
                 <div class="ad-copy-fade"></div>
             </div>
-            <span class="toggle-copy" onclick="toggleCopy('${campaign.id}')">Show more</span>
+            <span class="toggle-copy" onclick="toggleCopy('${campaign.id}')">Show full ad copy</span>
         ` : '';
 
         return `
             <div class="creative-card" data-type="${creative.type}">
                 <div class="creative-media">
-                    ${mediaContent}
-                    ${mediaTypeBadge}
+                    ${mediaHTML}
+                    ${badge}
                     <span class="creative-number">${campaign.id.toUpperCase()}-${index + 1}</span>
                 </div>
                 <div class="creative-body">
                     <div class="creative-title">${creative.label}</div>
+                    ${fileName}
+                    ${driveLink}
                     ${copySection}
                 </div>
             </div>
@@ -634,10 +528,9 @@ There is no expiry date on stoke. Your best waves are waiting.
         const el = document.getElementById('copy-' + id);
         const btn = el.nextElementSibling;
         el.classList.toggle('expanded');
-        btn.textContent = el.classList.contains('expanded') ? 'Show less' : 'Show more';
+        btn.textContent = el.classList.contains('expanded') ? 'Show less' : 'Show full ad copy';
     }
 
-    // ── Filters ──
     document.querySelectorAll('.filter-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
@@ -646,7 +539,6 @@ There is no expiry date on stoke. Your best waves are waiting.
         });
     });
 
-    // Initial render
     render('all');
     </script>
 </body>
