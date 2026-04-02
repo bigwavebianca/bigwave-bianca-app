@@ -493,13 +493,14 @@
         const driveLink = creative.driveId
             ? `<a class="drive-link" href="https://drive.google.com/file/d/${creative.driveId}/view" target="_blank">Open in Drive &nearr;</a>` : '';
 
-        const copySection = index === 0 ? `
-            <div class="ad-copy" id="copy-${campaign.id}">
+        const copyId = campaign.id + '-' + index;
+        const copySection = `
+            <div class="ad-copy" id="copy-${copyId}">
                 ${campaign.adCopy.replace(/\n/g, '<br>')}
                 <div class="ad-copy-fade"></div>
             </div>
-            <span class="toggle-copy" onclick="toggleCopy('${campaign.id}')">Show full ad copy</span>
-        ` : '';
+            <span class="toggle-copy" onclick="toggleCopy('${copyId}')">Show full ad copy</span>
+        `;
 
         return `
             <div class="creative-card" data-type="${creative.type}">
